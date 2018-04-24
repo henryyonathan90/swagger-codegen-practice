@@ -1,0 +1,2510 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "HotelContent"
+  },
+  "host": "localhost:8085",
+  "basePath": "/hotel-content",
+  "tags": [
+    {
+      "name": "cache-util-controller",
+      "description": "Cache Util Controller"
+    },
+    {
+      "name": "synchronize-content-controller",
+      "description": "Synchronize Content Controller"
+    },
+    {
+      "name": "hotel-controller",
+      "description": "Hotel Controller"
+    },
+    {
+      "name": "gdn-version-controller",
+      "description": "Gdn Version Controller"
+    },
+    {
+      "name": "hotel-area-controller",
+      "description": "Hotel Area Controller"
+    }
+  ],
+  "paths": {
+    "/api/cache-util": {
+      "delete": {
+        "tags": [
+          "cache-util-controller"
+        ],
+        "summary": "deleteCacheByPattern",
+        "operationId": "deleteCacheByPatternUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CacheDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/hotelAreas/{code}": {
+      "get": {
+        "tags": [
+          "hotel-area-controller"
+        ],
+        "summary": "findByStoreIdAndCode",
+        "operationId": "findByStoreIdAndCodeUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«HotelAreaRestModel»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "hotel-area-controller"
+        ],
+        "summary": "updateByStoreIdAndCode",
+        "operationId": "updateByStoreIdAndCodeUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "masterHotelArea",
+            "description": "masterHotelArea",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MasterHotelArea"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "hotel-area-controller"
+        ],
+        "summary": "deleteByStoreIdAndCode",
+        "operationId": "deleteByStoreIdAndCodeUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/hotels": {
+      "get": {
+        "tags": [
+          "hotel-controller"
+        ],
+        "summary": "findAllByStoreId",
+        "operationId": "findAllByStoreIdUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "codes",
+            "in": "query",
+            "description": "codes",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«List«HotelRestModel»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/hotels/active/{active}": {
+      "get": {
+        "tags": [
+          "hotel-controller"
+        ],
+        "summary": "findAllByStoreIdAndActive",
+        "operationId": "findAllByStoreIdAndActiveUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "active",
+            "in": "path",
+            "description": "active",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "fields",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "CODE",
+                "AREA_CODE",
+                "AREA_NAME",
+                "COUNTRY_CODE",
+                "COUNTRY_NAME",
+                "BED_BANKS",
+                "NAME",
+                "DESCRIPTION",
+                "STAR_RATING",
+                "HOTEL_ADDRESS",
+                "LONGITUDE",
+                "LATITUDE",
+                "ZIP_CODE",
+                "MAIN_IMAGE",
+                "SIDE_IMAGES",
+                "TRIP_ADVISOR_IMAGES",
+                "ROOM_IMAGES",
+                "IMAGE_CHECKING_STATUS",
+                "PHONE",
+                "REVIEW_RATING",
+                "FACILITY_GROUPS",
+                "ROOM_FACILITIES",
+                "HOTEL_FACILITIES",
+                "POINT_OF_INTERESTS",
+                "TERMINALS",
+                "BOARD_TYPES",
+                "ACCOMMODATION_TYPE",
+                "ACCOMMODATION_DESCRIPTION",
+                "ZONE",
+                "ZONE_NAME",
+                "WEBSITE",
+                "EMAIL",
+                "SEGMENTS",
+                "TRIP_ADVISOR_DATA",
+                "ACTIVE"
+              ]
+            },
+            "collectionFormat": "multi",
+            "enum": [
+              "CODE",
+              "AREA_CODE",
+              "AREA_NAME",
+              "COUNTRY_CODE",
+              "COUNTRY_NAME",
+              "BED_BANKS",
+              "NAME",
+              "DESCRIPTION",
+              "STAR_RATING",
+              "HOTEL_ADDRESS",
+              "LONGITUDE",
+              "LATITUDE",
+              "ZIP_CODE",
+              "MAIN_IMAGE",
+              "SIDE_IMAGES",
+              "TRIP_ADVISOR_IMAGES",
+              "ROOM_IMAGES",
+              "IMAGE_CHECKING_STATUS",
+              "PHONE",
+              "REVIEW_RATING",
+              "FACILITY_GROUPS",
+              "ROOM_FACILITIES",
+              "HOTEL_FACILITIES",
+              "POINT_OF_INTERESTS",
+              "TERMINALS",
+              "BOARD_TYPES",
+              "ACCOMMODATION_TYPE",
+              "ACCOMMODATION_DESCRIPTION",
+              "ZONE",
+              "ZONE_NAME",
+              "WEBSITE",
+              "EMAIL",
+              "SEGMENTS",
+              "TRIP_ADVISOR_DATA",
+              "ACTIVE"
+            ]
+          },
+          {
+            "name": "codes",
+            "in": "query",
+            "description": "codes",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«List«HotelRestModel»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/hotels/bedBank/{bedBankCode}/bedBankHotelCode/{bedBankHotelCode}": {
+      "get": {
+        "tags": [
+          "hotel-controller"
+        ],
+        "summary": "findByStoreIdAndBedBankHotelCode",
+        "operationId": "findByStoreIdAndBedBankHotelCodeUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "bedBankCode",
+            "in": "path",
+            "description": "bedBankCode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bedBankHotelCode",
+            "in": "path",
+            "description": "bedBankHotelCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«HotelRestModel»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/hotels/{code}": {
+      "get": {
+        "tags": [
+          "hotel-controller"
+        ],
+        "summary": "findByStoreIdAndCode",
+        "operationId": "findByStoreIdAndCodeUsingGET_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«HotelRestModel»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "hotel-controller"
+        ],
+        "summary": "deleteByStoreIdAndCode",
+        "operationId": "deleteByStoreIdAndCodeUsingDELETE_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/synchronize": {
+      "post": {
+        "tags": [
+          "synchronize-content-controller"
+        ],
+        "summary": "synchronize",
+        "operationId": "synchronizeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SynchronizeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/synchronize/collect/image": {
+      "post": {
+        "tags": [
+          "synchronize-content-controller"
+        ],
+        "summary": "collectTripAdvisorImage",
+        "operationId": "collectTripAdvisorImageUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/synchronize/collect/rating": {
+      "post": {
+        "tags": [
+          "synchronize-content-controller"
+        ],
+        "summary": "collectTripAdvisorRating",
+        "operationId": "collectTripAdvisorRatingUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/synchronize/remove/missing/image": {
+      "delete": {
+        "tags": [
+          "synchronize-content-controller"
+        ],
+        "summary": "removeMissingImage",
+        "operationId": "removeMissingImageUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContentResponse«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/version": {
+      "get": {
+        "tags": [
+          "gdn-version-controller"
+        ],
+        "summary": "version",
+        "operationId": "versionUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "head": {
+        "tags": [
+          "gdn-version-controller"
+        ],
+        "summary": "version",
+        "operationId": "versionUsingHEAD",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "gdn-version-controller"
+        ],
+        "summary": "version",
+        "operationId": "versionUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "gdn-version-controller"
+        ],
+        "summary": "version",
+        "operationId": "versionUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "gdn-version-controller"
+        ],
+        "summary": "version",
+        "operationId": "versionUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "gdn-version-controller"
+        ],
+        "summary": "version",
+        "operationId": "versionUsingOPTIONS",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "gdn-version-controller"
+        ],
+        "summary": "version",
+        "operationId": "versionUsingPATCH",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "header",
+            "description": "client's store id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "clientId",
+            "in": "header",
+            "description": "client's id",
+            "required": true,
+            "type": "string",
+            "default": "10001"
+          },
+          {
+            "name": "channelId",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator"
+          },
+          {
+            "name": "businessChannel",
+            "in": "header",
+            "description": "client's channel id",
+            "required": true,
+            "type": "string",
+            "default": "hotel-integrator-web"
+          },
+          {
+            "name": "username",
+            "in": "header",
+            "description": "client's username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "unique id per request",
+            "required": true,
+            "type": "string",
+            "default": "RANDOM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BedBank": {
+      "type": "object",
+      "properties": {
+        "bedBankCode": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "CacheDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string"
+        }
+      }
+    },
+    "ContentBedBank": {
+      "type": "object",
+      "properties": {
+        "bedBanks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "HOTELBEDS"
+            ]
+          }
+        },
+        "contentType": {
+          "type": "string",
+          "enum": [
+            "HOTEL",
+            "COUNTRY",
+            "DESTINATION",
+            "ACCOMMODATION",
+            "BOARD",
+            "CATEGORY",
+            "CHAIN",
+            "CURRENCY",
+            "FACILITY",
+            "FACILITY_GROUP",
+            "FACILITY_TYPOLOGY",
+            "ISSUE",
+            "LANGUAGE",
+            "PROMOTION",
+            "ROOM",
+            "SEGMENT",
+            "TERMINAL",
+            "IMAGE_TYPE",
+            "GROUP_CATEGORY",
+            "RATE_COMMENT",
+            "RATE_COMMENT_DETAIL",
+            "HOTEL_AREA"
+          ]
+        }
+      }
+    },
+    "ContentResponse«HotelAreaRestModel»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "errorMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/HotelAreaRestModel"
+        }
+      }
+    },
+    "ContentResponse«HotelRestModel»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "errorMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/HotelRestModel"
+        }
+      }
+    },
+    "ContentResponse«List«HotelRestModel»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "errorMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HotelRestModel"
+          }
+        }
+      }
+    },
+    "ContentResponse«boolean»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "errorMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "value": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Facility": {
+      "type": "object",
+      "properties": {
+        "ageFrom": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ageTo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "applicationType": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "dateFrom": {
+          "type": "string"
+        },
+        "dateTo": {
+          "type": "string"
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "indFee": {
+          "type": "boolean"
+        },
+        "indLogic": {
+          "type": "boolean"
+        },
+        "indYesOrNo": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roomCategoryCode": {
+          "type": "string"
+        },
+        "textValue": {
+          "type": "string"
+        },
+        "timeFrom": {
+          "type": "string"
+        },
+        "timeTo": {
+          "type": "string"
+        }
+      }
+    },
+    "FacilityGroup": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "facilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Facility"
+          }
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "HotelAreaRestModel": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "bedBanks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BedBank"
+          }
+        },
+        "code": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Zone"
+          }
+        }
+      }
+    },
+    "HotelRestModel": {
+      "type": "object",
+      "properties": {
+        "accommodationDescription": {
+          "type": "string"
+        },
+        "accommodationType": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "areaCode": {
+          "type": "string"
+        },
+        "areaName": {
+          "type": "string"
+        },
+        "bedBanks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BedBank"
+          }
+        },
+        "boardTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "code": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "facilityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FacilityGroup"
+          }
+        },
+        "hotelAddress": {
+          "type": "string"
+        },
+        "hotelFacilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Facility"
+          }
+        },
+        "imageCheckingStatus": {
+          "type": "boolean"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "mainImage": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Phone"
+          }
+        },
+        "pointOfInterests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PointOfInterest"
+          }
+        },
+        "reviewRating": {
+          "type": "number",
+          "format": "double"
+        },
+        "roomFacilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Facility"
+          }
+        },
+        "roomImages": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/RoomImage"
+            }
+          }
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Segment"
+          }
+        },
+        "sideImages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SideImage"
+          }
+        },
+        "starRating": {
+          "type": "number",
+          "format": "double"
+        },
+        "terminals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Terminal"
+          }
+        },
+        "tripAdvisorData": {
+          "$ref": "#/definitions/TripAdvisor"
+        },
+        "tripAdvisorImages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SideImage"
+          }
+        },
+        "website": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "zoneName": {
+          "type": "string"
+        }
+      }
+    },
+    "MasterHotelArea": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "bedBanks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BedBank"
+          }
+        },
+        "code": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "storeId": {
+          "type": "string"
+        },
+        "updatedBy": {
+          "type": "string"
+        },
+        "updatedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Zone"
+          }
+        }
+      }
+    },
+    "Phone": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneType": {
+          "type": "string"
+        }
+      }
+    },
+    "PointOfInterest": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "facilityCode": {
+          "type": "string"
+        },
+        "groupCode": {
+          "type": "string"
+        },
+        "indFee": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "RoomImage": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "path": {
+          "type": "string"
+        },
+        "roomCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Segment": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "SideImage": {
+      "type": "object",
+      "properties": {
+        "large": {
+          "type": "string"
+        },
+        "medium": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "typeCode": {
+          "type": "string"
+        }
+      }
+    },
+    "SynchronizeRequest": {
+      "type": "object",
+      "properties": {
+        "contentBedBanks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContentBedBank"
+          }
+        }
+      }
+    },
+    "Terminal": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "TripAdvisor": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "collectImagesStatus": {
+          "type": "boolean"
+        },
+        "collectRatingStatus": {
+          "type": "boolean"
+        },
+        "hotelName": {
+          "type": "string"
+        },
+        "lastUpdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "numberOfReviews": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string"
+        },
+        "tripAdvisorId": {
+          "type": "string"
+        },
+        "tripAdvisorRating": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Zone": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
